@@ -48,7 +48,7 @@ body {
 
 
 /* =========================================
-   CONTENT
+   PAGE 1 CONTENT
 ========================================= */
 
 .opening-content {
@@ -86,7 +86,7 @@ body {
 
 
 /* =========================================
-   HEADING
+   HEADINGS
 ========================================= */
 
 h1 {
@@ -103,15 +103,14 @@ h1 {
 }
 
 h1 em {
-    font-weight: 400;
     font-style: italic;
-
+    font-weight: 400;
     color: #ffd9df;
 }
 
 
 /* =========================================
-   SUBTITLE
+   PAGE 1 SUBTITLE
 ========================================= */
 
 .subtitle {
@@ -130,7 +129,7 @@ h1 em {
 
 
 /* =========================================
-   OPEN BUTTON
+   BUTTON
 ========================================= */
 
 .open-button {
@@ -166,9 +165,6 @@ h1 em {
         background 0.3s ease;
 }
 
-
-/* Button becomes visible */
-
 .open-button.show {
     opacity: 1;
 
@@ -176,9 +172,6 @@ h1 em {
 
     pointer-events: auto;
 }
-
-
-/* Button hover */
 
 .open-button:hover {
     background: rgba(255, 255, 255, 0.16);
@@ -224,7 +217,7 @@ h1 em {
 }
 
 
-/* Individual stickers */
+/* Sticker positions */
 
 .s1 {
     top: 12%;
@@ -324,7 +317,7 @@ h1 em {
 
 
 /* =========================================
-   CONTENT ANIMATION
+   PAGE 1 ENTRANCE
 ========================================= */
 
 @keyframes contentAppear {
@@ -334,6 +327,137 @@ h1 em {
 
         transform:
             translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================
+   PAGE 2 — BIRTHDAY PAGE
+========================================= */
+
+.birthday-page {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(255, 220, 225, 0.10),
+            transparent 45%
+        ),
+        #8b1538;
+}
+
+.birthday-content {
+    width: 90%;
+    max-width: 620px;
+
+    text-align: center;
+
+    position: relative;
+    z-index: 5;
+
+    animation:
+        birthdayAppear 1.6s ease forwards;
+}
+
+
+/* =========================================
+   PAGE 2 HEADING
+========================================= */
+
+.birthday-content h1 {
+    font-size: clamp(48px, 9vw, 78px);
+
+    line-height: 1.05;
+
+    font-weight: 400;
+
+    letter-spacing: -2px;
+}
+
+.birthday-content h1 em {
+    color: #ffd9df;
+}
+
+
+/* =========================================
+   PAGE 2 POEM
+========================================= */
+
+.poem {
+    margin: 35px auto 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    color: rgba(255, 244, 234, 0.88);
+}
+
+.poem p {
+    margin-bottom: 24px;
+}
+
+
+/* =========================================
+   QUIET FINAL WISH
+========================================= */
+
+.hidden-wish {
+    margin-top: 28px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color: rgba(255, 244, 234, 0.55);
+}
+
+
+/* =========================================
+   PAGE 2 BUTTON
+========================================= */
+
+.birthday-content .open-button {
+    margin-top: 32px;
+}
+
+
+/* =========================================
+   PAGE 2 ENTRANCE
+========================================= */
+
+@keyframes birthdayAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px);
     }
 
     to {
@@ -367,6 +491,28 @@ h1 em {
         letter-spacing: 3px;
     }
 
+    .birthday-content {
+        width: 88%;
+    }
+
+    .birthday-content h1 {
+        font-size: 48px;
+    }
+
+    .poem {
+        font-size: 14px;
+
+        line-height: 1.75;
+    }
+
+    .poem p {
+        margin-bottom: 20px;
+    }
+
+    .hidden-wish {
+        font-size: 9px;
+    }
+
     .s1 {
         left: 7%;
     }
@@ -390,4 +536,4 @@ h1 em {
     .s8 {
         right: 3%;
     }
-}
+       }
