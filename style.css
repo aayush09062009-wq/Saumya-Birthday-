@@ -33,15 +33,21 @@ button {
 .stickers {
     position: fixed;
     inset: 0;
+
     pointer-events: none;
+
     z-index: 2;
+
     overflow: hidden;
 }
 
 .sticker {
     position: absolute;
+
     opacity: 0.65;
-    animation: floatSticker 6s ease-in-out infinite;
+
+    animation:
+        floatSticker 6s ease-in-out infinite;
 }
 
 .s1 {
@@ -114,18 +120,24 @@ button {
 }
 
 @keyframes floatSticker {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(0deg);
     }
 
     50% {
-        transform: translateY(-12px) rotate(5deg);
+        transform:
+            translateY(-12px)
+            rotate(5deg);
     }
 }
 
 
 /* =========================================
-   PAGE 1 — OPENING
+   PAGE 1
 ========================================= */
 
 .opening-page {
@@ -137,6 +149,7 @@ button {
     justify-content: center;
 
     position: relative;
+
     overflow: hidden;
 
     background:
@@ -151,34 +164,48 @@ button {
 .opening-content {
     width: 90%;
     max-width: 600px;
+
     text-align: center;
 
     position: relative;
     z-index: 5;
 
-    animation: pageAppear 1.4s ease forwards;
+    animation:
+        pageAppear 1.4s ease forwards;
 }
 
 .eyebrow {
     font-family: Arial, sans-serif;
+
     font-size: 10px;
+
     text-transform: uppercase;
+
     letter-spacing: 3px;
-    color: rgba(255, 244, 234, 0.65);
+
+    color:
+        rgba(255, 244, 234, 0.65);
 }
 
 .tiny-line {
     width: 35px;
     height: 1px;
-    background: rgba(255, 244, 234, 0.45);
 
-    margin: 15px auto 25px;
+    background:
+        rgba(255, 244, 234, 0.45);
+
+    margin:
+        15px auto 25px;
 }
 
 .opening-content h1 {
-    font-size: clamp(48px, 10vw, 78px);
+    font-size:
+        clamp(48px, 10vw, 78px);
+
     line-height: 0.95;
+
     font-weight: 400;
+
     letter-spacing: -2px;
 }
 
@@ -190,30 +217,40 @@ button {
     margin-top: 25px;
 
     font-family: Arial, sans-serif;
+
     font-size: 12px;
+
     line-height: 1.7;
+
     letter-spacing: 0.8px;
 
-    color: rgba(255, 244, 234, 0.72);
+    color:
+        rgba(255, 244, 234, 0.72);
 }
 
 .open-button {
     margin-top: 35px;
 
     border: none;
+
     background: transparent;
 
     color: #fff4ea;
 
     font-family: Arial, sans-serif;
+
     font-size: 11px;
+
     letter-spacing: 2px;
+
     text-transform: lowercase;
 
     cursor: pointer;
 
     opacity: 0;
-    transform: translateY(8px);
+
+    transform:
+        translateY(8px);
 
     transition:
         opacity 0.8s ease,
@@ -222,28 +259,18 @@ button {
 
 .open-button.show {
     opacity: 1;
-    transform: translateY(0);
+
+    transform:
+        translateY(0);
 }
 
 .open-button:hover {
     color: #ffd9df;
 }
 
-@keyframes pageAppear {
-    from {
-        opacity: 0;
-        transform: translateY(18px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 
 /* =========================================
-   PAGE 2 — BIRTHDAY
+   PAGE 2
 ========================================= */
 
 .birthday-page {
@@ -255,6 +282,7 @@ button {
     justify-content: center;
 
     position: relative;
+
     overflow: hidden;
 
     background:
@@ -275,13 +303,18 @@ button {
     position: relative;
     z-index: 5;
 
-    animation: pageAppear 1.3s ease forwards;
+    animation:
+        pageAppear 1.3s ease forwards;
 }
 
 .birthday-content h1 {
-    font-size: clamp(48px, 10vw, 78px);
+    font-size:
+        clamp(48px, 10vw, 78px);
+
     line-height: 0.95;
+
     font-weight: 400;
+
     letter-spacing: -2px;
 }
 
@@ -292,11 +325,17 @@ button {
 .poem {
     margin-top: 30px;
 
-    font-family: Georgia, "Times New Roman", serif;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
     font-size: 15px;
+
     line-height: 1.7;
 
-    color: rgba(255, 244, 234, 0.82);
+    color:
+        rgba(255, 244, 234, 0.82);
 }
 
 .poem p {
@@ -307,16 +346,20 @@ button {
     margin-top: 5px;
 
     font-family: Arial, sans-serif;
+
     font-size: 9px;
+
     letter-spacing: 2px;
+
     text-transform: uppercase;
 
-    color: rgba(255, 244, 234, 0.45);
+    color:
+        rgba(255, 244, 234, 0.45);
 }
 
 
 /* =========================================
-   PAGE 3 — CAKE PAGE
+   PAGE 3 — CAKE
 ========================================= */
 
 .cake-page {
@@ -328,6 +371,7 @@ button {
     justify-content: center;
 
     position: relative;
+
     overflow: hidden;
 
     background:
@@ -348,16 +392,18 @@ button {
     position: relative;
     z-index: 5;
 
-    animation: cakePageAppear 1.3s ease forwards;
+    animation:
+        cakePageAppear 1.3s ease forwards;
 }
 
-
-/* CAKE HEADING */
-
 .cake-content h1 {
-    font-size: clamp(52px, 10vw, 82px);
+    font-size:
+        clamp(52px, 10vw, 82px);
+
     line-height: 0.95;
+
     font-weight: 400;
+
     letter-spacing: -2px;
 }
 
@@ -372,11 +418,15 @@ button {
     margin-top: 20px;
 
     font-family: Arial, sans-serif;
+
     font-size: 12px;
+
     line-height: 1.7;
+
     letter-spacing: 0.8px;
 
-    color: rgba(255, 244, 234, 0.72);
+    color:
+        rgba(255, 244, 234, 0.72);
 }
 
 
@@ -391,6 +441,7 @@ button {
     position: relative;
 
     touch-action: none;
+
     cursor: crosshair;
 }
 
@@ -406,12 +457,18 @@ button {
     left: 50%;
     bottom: 18px;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     transition:
         transform 0.8s ease,
         opacity 0.8s ease;
+
+    cursor: pointer;
 }
+
+
+/* CAKE TOP */
 
 .cake-top {
     position: absolute;
@@ -425,17 +482,41 @@ button {
 
     border-radius: 50%;
 
-    border: 2px solid rgba(255, 255, 255, 0.25);
+    border:
+        2px solid
+        rgba(255, 255, 255, 0.25);
 
     z-index: 3;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     color: #9b3e55;
-    font-size: 18px;
 }
+
+.cake-top span {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 12px;
+
+    line-height: 1.15;
+
+    text-align: center;
+
+    color: #9b3e55;
+
+    font-style: italic;
+
+    font-weight: 600;
+}
+
+
+/* CAKE BODY */
 
 .cake-body {
     position: absolute;
@@ -447,12 +528,16 @@ button {
 
     background: #e99a9f;
 
-    border-radius: 0 0 15px 15px;
+    border-radius:
+        0 0 15px 15px;
 
     z-index: 2;
 
     overflow: hidden;
 }
+
+
+/* CREAM */
 
 .cream {
     position: absolute;
@@ -462,7 +547,8 @@ button {
 
     background: #fff1e8;
 
-    border-radius: 0 0 20px 20px;
+    border-radius:
+        0 0 20px 20px;
 
     top: 0;
 }
@@ -479,6 +565,9 @@ button {
     right: 35px;
 }
 
+
+/* BASE */
+
 .cake-base {
     position: absolute;
 
@@ -486,6 +575,7 @@ button {
     height: 15px;
 
     bottom: 0;
+
     left: -7px;
 
     background: #f4b7bc;
@@ -496,50 +586,105 @@ button {
 }
 
 
-/* CANDLE */
+/* =========================================
+   CANDLES
+========================================= */
 
 .candle {
     position: absolute;
 
     width: 13px;
-    height: 48px;
+    height: 42px;
 
-    background: #fff0dc;
+    background:
+        linear-gradient(
+            90deg,
+            #fff0dc,
+            #ffd7c7,
+            #fff0dc
+        );
 
     border-radius: 5px;
 
-    left: 50%;
-    top: -18px;
+    top: -17px;
 
-    transform: translateX(-50%);
+    z-index: 6;
 
-    z-index: 5;
+    transition:
+        transform 0.3s ease;
 }
+
+
+/* Candle positions */
+
+.candle1 {
+    left: 62px;
+}
+
+.candle2 {
+    left: 89px;
+}
+
+.candle3 {
+    left: 116px;
+}
+
+
+/* Flame */
 
 .flame {
     position: absolute;
 
-    width: 15px;
-    height: 22px;
+    width: 14px;
+    height: 20px;
 
     left: 50%;
     top: -19px;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     background: #ffd36a;
 
-    border-radius: 50%;
+    border-radius:
+        50% 50% 50% 50%;
 
     box-shadow:
-        0 0 15px rgba(255, 210, 100, 0.8);
+        0 0 15px
+        rgba(255, 210, 100, 0.8);
 
     animation:
-        flame 0.8s ease-in-out infinite alternate;
+        flame 0.8s
+        ease-in-out
+        infinite alternate;
 }
 
 
-/* KNIFE */
+/* Candles blown */
+
+.candles-blown .flame {
+    animation: none;
+
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        scale(0);
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease;
+}
+
+.candles-blown .candle {
+    transform:
+        translateY(3px);
+}
+
+
+/* =========================================
+   KNIFE
+========================================= */
 
 .knife {
     position: absolute;
@@ -569,7 +714,9 @@ button {
 }
 
 
-/* SWIPE TEXT */
+/* =========================================
+   INSTRUCTIONS
+========================================= */
 
 .swipe-text {
     margin-top: 0;
@@ -582,14 +729,31 @@ button {
 
     text-transform: uppercase;
 
-    color: rgba(255, 244, 234, 0.72);
+    color:
+        rgba(255, 244, 234, 0.72);
 
     animation:
-        swipePulse 1.8s ease-in-out infinite;
+        swipePulse 1.8s
+        ease-in-out
+        infinite;
+
+    transition:
+        opacity 0.4s ease;
 }
 
 
-/* CUT MESSAGE */
+/* Cut instruction initially hidden */
+
+.cut-instruction {
+    display: none;
+
+    opacity: 0;
+}
+
+
+/* =========================================
+   FINAL MESSAGE
+========================================= */
 
 .cut-message {
     display: none;
@@ -597,7 +761,8 @@ button {
     margin-top: 15px;
 
     animation:
-        messageAppear 1s ease forwards;
+        messageAppear 1s
+        ease forwards;
 }
 
 .cut-message p {
@@ -609,13 +774,17 @@ button {
 
     text-transform: uppercase;
 
-    color: rgba(255, 244, 234, 0.6);
+    color:
+        rgba(255, 244, 234, 0.6);
 
     margin-bottom: 8px;
 }
 
 .cut-message h2 {
-    font-family: Georgia, "Times New Roman", serif;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
 
     font-size: 27px;
 
@@ -628,7 +797,7 @@ button {
 
 
 /* =========================================
-   CAKE CUT — FIXED SELECTORS
+   CAKE CUT
 ========================================= */
 
 .cake-area.cut .cake {
@@ -637,16 +806,6 @@ button {
         scale(0.96);
 
     opacity: 0.85;
-}
-
-.cake-area.cut .flame {
-    animation: none;
-
-    opacity: 0;
-
-    transform:
-        translateX(-50%)
-        scale(0);
 }
 
 
@@ -661,17 +820,117 @@ button {
 
     pointer-events: none;
 
-    font-family: Georgia, "Times New Roman", serif;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
 
     font-size: 18px;
 
     color: #ffd9df;
 
     animation:
-        confettiFall 1.6s ease-out forwards;
+        confettiFall 1.6s
+        ease-out
+        forwards;
 }
 
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes pageAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes cakePageAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes flame {
+
+    from {
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+
+    to {
+        transform:
+            translateX(-50%)
+            scale(0.82);
+    }
+}
+
+
+@keyframes swipePulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+
+        transform:
+            translateX(0);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform:
+            translateX(5px);
+    }
+}
+
+
+@keyframes messageAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
 @keyframes confettiFall {
+
     from {
         opacity: 1;
 
@@ -688,61 +947,6 @@ button {
             translate(var(--x), var(--y))
             rotate(220deg)
             scale(0.6);
-    }
-}
-
-
-/* =========================================
-   ANIMATIONS
-========================================= */
-
-@keyframes cakePageAppear {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes flame {
-    from {
-        transform:
-            translateX(-50%)
-            scale(1);
-    }
-
-    to {
-        transform:
-            translateX(-50%)
-            scale(0.82);
-    }
-}
-
-@keyframes swipePulse {
-    0%, 100% {
-        opacity: 0.5;
-        transform: translateX(0);
-    }
-
-    50% {
-        opacity: 1;
-        transform: translateX(5px);
-    }
-}
-
-@keyframes messageAppear {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
     }
 }
 
@@ -777,13 +981,19 @@ button {
         height: 205px;
     }
 
+    .cake-top span {
+        font-size: 11px;
+    }
+
     .swipe-text {
         font-size: 9px;
+
         letter-spacing: 1.5px;
     }
 
     .poem {
         font-size: 13px;
+
         line-height: 1.6;
     }
-       }
+   }
