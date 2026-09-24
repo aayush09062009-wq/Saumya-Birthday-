@@ -1,0 +1,393 @@
+/* =========================================
+   GLOBAL
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    background: #8b1538;
+    color: #fff4ea;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+
+/* =========================================
+   PAGE 1
+========================================= */
+
+.opening-page {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(255, 255, 255, 0.07),
+            transparent 45%
+        ),
+        #8b1538;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.opening-content {
+    width: 90%;
+    max-width: 650px;
+
+    text-align: center;
+
+    position: relative;
+    z-index: 5;
+
+    animation: contentAppear 1.5s ease forwards;
+}
+
+.eyebrow {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+
+    letter-spacing: 4px;
+    text-transform: uppercase;
+
+    opacity: 0.75;
+
+    margin-bottom: 18px;
+}
+
+.tiny-line {
+    width: 35px;
+    height: 1px;
+
+    background: rgba(255, 244, 234, 0.65);
+
+    margin: 0 auto 30px;
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+h1 {
+    font-size: clamp(43px, 9vw, 78px);
+
+    line-height: 1.05;
+
+    font-weight: 400;
+
+    letter-spacing: -2px;
+
+    text-shadow:
+        0 3px 20px rgba(0, 0, 0, 0.12);
+}
+
+h1 em {
+    font-weight: 400;
+    font-style: italic;
+
+    color: #ffd9df;
+}
+
+
+/* =========================================
+   SUBTITLE
+========================================= */
+
+.subtitle {
+    margin-top: 28px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    letter-spacing: 1px;
+
+    color: rgba(255, 244, 234, 0.78);
+}
+
+
+/* =========================================
+   OPEN BUTTON
+========================================= */
+
+.open-button {
+    margin-top: 38px;
+
+    padding: 13px 25px;
+
+    border: 1px solid rgba(255, 244, 234, 0.45);
+
+    border-radius: 50px;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    color: #fff4ea;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    transform: translateY(10px);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        background 0.3s ease;
+}
+
+
+/* Button becomes visible */
+
+.open-button.show {
+    opacity: 1;
+
+    transform: translateY(0);
+
+    pointer-events: auto;
+}
+
+
+/* Button hover */
+
+.open-button:hover {
+    background: rgba(255, 255, 255, 0.16);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   FLOATING STICKERS
+========================================= */
+
+.stickers {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 2;
+}
+
+.sticker {
+    position: absolute;
+
+    display: block;
+
+    user-select: none;
+
+    opacity: 0.75;
+
+    filter: drop-shadow(
+        0 5px 10px rgba(0, 0, 0, 0.12)
+    );
+
+    animation:
+        floatSticker 7s ease-in-out infinite;
+}
+
+
+/* Individual stickers */
+
+.s1 {
+    top: 12%;
+    left: 10%;
+    font-size: 28px;
+    animation-delay: 0s;
+}
+
+.s2 {
+    top: 20%;
+    right: 14%;
+    font-size: 23px;
+    animation-delay: 1s;
+}
+
+.s3 {
+    top: 68%;
+    left: 8%;
+    font-size: 27px;
+    animation-delay: 2s;
+}
+
+.s4 {
+    top: 10%;
+    right: 35%;
+    font-size: 20px;
+    animation-delay: 3s;
+}
+
+.s5 {
+    bottom: 16%;
+    right: 12%;
+    font-size: 30px;
+    animation-delay: 1.5s;
+}
+
+.s6 {
+    top: 43%;
+    left: 5%;
+    font-size: 25px;
+    animation-delay: 2.5s;
+}
+
+.s7 {
+    bottom: 30%;
+    left: 20%;
+    font-size: 19px;
+    animation-delay: 4s;
+}
+
+.s8 {
+    top: 34%;
+    right: 7%;
+    font-size: 25px;
+    animation-delay: 3.5s;
+}
+
+.s9 {
+    bottom: 8%;
+    left: 43%;
+    font-size: 22px;
+    animation-delay: 2s;
+}
+
+.s10 {
+    top: 75%;
+    right: 32%;
+    font-size: 19px;
+    animation-delay: 4.5s;
+}
+
+
+/* =========================================
+   STICKER ANIMATION
+========================================= */
+
+@keyframes floatSticker {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(-5deg);
+    }
+
+    50% {
+        transform:
+            translateY(-18px)
+            rotate(6deg);
+    }
+
+    100% {
+        transform:
+            translateY(0)
+            rotate(-5deg);
+    }
+}
+
+
+/* =========================================
+   CONTENT ANIMATION
+========================================= */
+
+@keyframes contentAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 47px;
+
+        letter-spacing: -1.5px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+    }
+
+    .eyebrow {
+        font-size: 9px;
+
+        letter-spacing: 3px;
+    }
+
+    .s1 {
+        left: 7%;
+    }
+
+    .s2 {
+        right: 8%;
+    }
+
+    .s3 {
+        left: 5%;
+    }
+
+    .s5 {
+        right: 7%;
+    }
+
+    .s6 {
+        left: 3%;
+    }
+
+    .s8 {
+        right: 3%;
+    }
+}
