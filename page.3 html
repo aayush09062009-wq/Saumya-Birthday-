@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Make a Wish 🎂</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Floating stickers -->
+    <div class="stickers">
+
+        <span class="sticker s1">✦</span>
+        <span class="sticker s2">♡</span>
+        <span class="sticker s3">✿</span>
+        <span class="sticker s4">✨</span>
+        <span class="sticker s5">♡</span>
+        <span class="sticker s6">🌷</span>
+
+    </div>
+
+
+    <!-- PAGE 3 -->
+
+    <main class="cake-page">
+
+        <div class="cake-content">
+
+            <p class="eyebrow">
+                one little tradition
+            </p>
+
+            <div class="tiny-line"></div>
+
+            <h1>
+                Make a<br>
+                <em>wish.</em>
+            </h1>
+
+            <p class="cake-subtitle">
+                Close your eyes for a second.<br>
+                There's something waiting to be wished for.
+            </p>
+
+
+            <!-- Cake -->
+
+            <div id="cakeArea" class="cake-area">
+
+                <div id="knife" class="knife">
+                    🔪
+                </div>
+
+                <div id="cake" class="cake">
+
+                    <div class="candle">
+                        <div id="flame" class="flame"></div>
+                    </div>
+
+                    <div class="cake-top">
+                        <span>♡</span>
+                    </div>
+
+                    <div class="cake-body">
+
+                        <div class="cream cream1"></div>
+                        <div class="cream cream2"></div>
+                        <div class="cream cream3"></div>
+
+                    </div>
+
+                    <div class="cake-base"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Instruction -->
+
+            <p id="swipeText" class="swipe-text">
+                swipe across the cake to cut it →
+            </p>
+
+
+            <!-- Appears after successful cut -->
+
+            <div id="cutMessage" class="cut-message">
+
+                <p>
+                    and just like that...
+                </p>
+
+                <h2>
+                    wish granted ♡
+                </h2>
+
+                <button
+                    class="open-button show"
+                    onclick="window.location.href='page4.html'">
+
+                    there's one last thing&nbsp; →
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="cake.js"></script>
+
+</body>
+</html>
