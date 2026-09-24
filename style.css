@@ -997,3 +997,484 @@ button {
         line-height: 1.6;
     }
    }
+/* =========================================
+   PAGE 4 — MEMORY DESK
+========================================= */
+
+.page4-body {
+    background: #eadcc9;
+    color: #513c36;
+    overflow: hidden;
+}
+
+
+/* =========================================
+   MAIN PAGE
+========================================= */
+
+.memory-page {
+    width: 100%;
+    min-height: 100vh;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(255,255,255,0.55),
+            transparent 45%
+        ),
+        #eadcc9;
+}
+
+
+/* =========================================
+   DECORATIONS
+========================================= */
+
+.memory-deco {
+    position: absolute;
+
+    color: rgba(116, 76, 67, 0.35);
+
+    pointer-events: none;
+
+    animation:
+        memoryFloat 5s ease-in-out infinite;
+}
+
+.deco1 {
+    left: 10%;
+    top: 14%;
+    font-size: 18px;
+}
+
+.deco2 {
+    right: 10%;
+    top: 22%;
+    font-size: 18px;
+    animation-delay: 1s;
+}
+
+.deco3 {
+    left: 8%;
+    bottom: 18%;
+    font-size: 16px;
+    animation-delay: 2s;
+}
+
+.deco4 {
+    right: 13%;
+    bottom: 13%;
+    font-size: 14px;
+    animation-delay: 0.7s;
+}
+
+@keyframes memoryFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+
+/* =========================================
+   MUSIC QUESTION
+========================================= */
+
+.music-question {
+    position: absolute;
+
+    z-index: 50;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 230px;
+
+    text-align: center;
+
+    animation:
+        musicPop 1s ease forwards;
+}
+
+.music-sticker {
+    width: 72px;
+    height: 72px;
+
+    margin: 0 auto 15px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fff6ec;
+
+    border-radius: 24px 20px 25px 19px;
+
+    border:
+        2px solid
+        rgba(115, 72, 63, 0.15);
+
+    box-shadow:
+        0 12px 25px
+        rgba(80, 50, 40, 0.12);
+
+    transform: rotate(-5deg);
+}
+
+.sticker-face {
+    font-size: 30px;
+
+    color: #a75b66;
+}
+
+.music-note {
+    position: absolute;
+
+    right: 7px;
+    top: 4px;
+
+    font-family: Georgia, serif;
+
+    font-size: 20px;
+
+    color: #80505a;
+
+    animation:
+        noteFloat 1.2s ease-in-out infinite;
+}
+
+.music-question-text {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 18px;
+
+    line-height: 1.35;
+
+    color: #5c433c;
+}
+
+.music-yes {
+    margin-top: 18px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #8d5260;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    text-transform: lowercase;
+
+    cursor: pointer;
+
+    padding: 10px 16px;
+
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease;
+}
+
+.music-yes:hover {
+    color: #b15e6c;
+
+    transform:
+        translateY(-2px);
+}
+
+@keyframes musicPop {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -44%)
+            scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+}
+
+@keyframes noteFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.music-dismiss {
+    animation:
+        musicLeave 0.7s ease forwards;
+}
+
+@keyframes musicLeave {
+
+    to {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -58%)
+            scale(0.9);
+    }
+}
+
+
+/* =========================================
+   MUSIC CONTROL
+========================================= */
+
+.music-control {
+    position: absolute;
+
+    z-index: 30;
+
+    right: 18px;
+    top: 18px;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(90, 60, 50, 0.15);
+
+    background:
+        rgba(255, 248, 239, 0.7);
+
+    color: #75534b;
+
+    font-family: Georgia, serif;
+
+    cursor: pointer;
+
+    opacity: 0.75;
+
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.music-control:hover {
+    opacity: 1;
+
+    transform: scale(1.06);
+}
+
+
+/* =========================================
+   MEMORY SCENE
+========================================= */
+
+.memory-scene {
+    width: 94%;
+    max-width: 620px;
+
+    text-align: center;
+
+    padding-top: 8vh;
+
+    transition:
+        opacity 1s ease;
+}
+
+.hidden-scene {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.memory-eyebrow {
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 3px;
+
+    color:
+        rgba(81, 60, 54, 0.55);
+}
+
+.memory-title {
+    margin-top: 12px;
+
+    font-size:
+        clamp(38px, 9vw, 64px);
+
+    line-height: 0.98;
+
+    font-weight: 400;
+
+    letter-spacing: -1.5px;
+
+    color: #513c36;
+}
+
+.memory-title em {
+    color: #9d5963;
+}
+
+.memory-hint {
+    margin-top: 14px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color:
+        rgba(81, 60, 54, 0.55);
+
+    transition:
+        opacity 0.6s ease;
+}
+
+
+/* =========================================
+   DESK
+========================================= */
+
+.desk {
+    width: 100%;
+    height: 350px;
+
+    margin-top: 12px;
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.16),
+            transparent
+        ),
+        #c9a98e;
+
+    border-radius:
+        22px 22px 8px 8px;
+
+    box-shadow:
+        0 20px 45px
+        rgba(80, 55, 42, 0.18);
+
+    transition:
+        opacity 1s ease;
+}
+
+
+/* =========================================
+   PAPER NOTE
+========================================= */
+
+.paper-note {
+    position: absolute;
+
+    left: 8%;
+    top: 8%;
+
+    width: 100px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f6eddf;
+
+    transform: rotate(-6deg);
+
+    box-shadow:
+        0 5px 12px
+        rgba(70, 50, 40, 0.12);
+}
+
+.paper-note span {
+    font-family:
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 9px;
+
+    color: #765850;
+
+    transform: rotate(-2deg);
+}
+
+
+/* =========================================
+   PHOTOS
+========================================= */
+
+.memory-photo {
+    position: absolute;
+
+    border: none;
+
+    padding: 0;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    perspective: 900px;
+
+    transition:
+        transform 0.5s ease;
+}
+
+.memory-photo:hover {
+    transform:
+        translateY(-4px)
+        rotate(0deg);
+}
+
+.photo-one {
+    left: 12%;
+    top: 22%;
+
+    transform: rotate(-7deg);
+}
+
+.photo-two {
+    right: 11%;
+    top:
