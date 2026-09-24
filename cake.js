@@ -1,23 +1,78 @@
 // =========================================
-// PAGE 3 — CAKE SWIPE INTERACTION
+// PAGE 3 — BIRTHDAY CAKE
 // =========================================
 
 const cakeArea = document.getElementById("cakeArea");
 const cake = document.getElementById("cake");
+
 const knife = document.getElementById("knife");
-const swipeText = document.getElementById("swipeText");
+
+const blowText = document.getElementById("blowText");
+const cutText = document.getElementById("cutText");
+
 const cutMessage = document.getElementById("cutMessage");
 
+
+// =========================================
+// STATE
+// =========================================
+
+let candlesBlown = false;
 let isSwiping = false;
-let startX = 0;
-let startY = 0;
 let hasCut = false;
 
+let startX = 0;
+let startY = 0;
 
-// START SWIPE
+
+// =========================================
+// INITIAL STATE
+// =========================================
+
+cutText.style.display = "none";
+cutMessage.style.display = "none";
+
+
+// =========================================
+// STEP 1 — BLOW CANDLES
+// =========================================
+
+cake.addEventListener("click", () => {
+
+    if (candlesBlown || hasCut) return;
+
+    candlesBlown = true;
+
+    // Turn off flames
+    cake.classList.add("candles-blown");
+
+    // Hide first instruction
+    blowText.style.opacity = "0";
+
+    setTimeout(() => {
+
+        blowText.style.display = "none";
+
+        // Show second instruction
+        cutText.style.display = "block";
+
+        setTimeout(() => {
+            cutText.style.opacity = "1";
+        }, 50);
+
+    }, 500);
+
+});
+
+
+// =========================================
+// STEP 2 — START SWIPE
+// =========================================
+
 cakeArea.addEventListener("pointerdown", (event) => {
 
-    if (hasCut) return;
+    // Can't cut before candles are blown
+    if (!candlesBlown || hasCut) return;
 
     isSwiping = true;
 
@@ -27,13 +82,17 @@ cakeArea.addEventListener("pointerdown", (event) => {
     cakeArea.classList.add("swiping");
 
     cakeArea.setPointerCapture(event.pointerId);
+
 });
 
 
+// =========================================
 // DURING SWIPE
+// =========================================
+
 cakeArea.addEventListener("pointermove", (event) => {
 
-    if (!isSwiping || hasCut) return;
+    if (!isSwiping || !candlesBlown || hasCut) return;
 
     const currentX = event.clientX;
     const currentY = event.clientY;
@@ -41,27 +100,36 @@ cakeArea.addEventListener("pointermove", (event) => {
     const distanceX = currentX - startX;
     const distanceY = Math.abs(currentY - startY);
 
-    // Move knife with finger
+
+    // Move knife according to finger
     const knifeX = Math.max(
-        15,
-        Math.min(245, 15 + distanceX)
+        10,
+        Math.min(250, 15 + distanceX)
     );
 
     knife.style.left = knifeX + "px";
 
-    // Slight knife movement
     knife.style.transform =
         "rotate(-25deg) translateX(0)";
 
-    // Successful horizontal swipe
-    if (distanceX > 120 && distanceY < 80) {
+
+    // Successful left → right swipe
+    if (
+        distanceX > 120 &&
+        distanceY < 80
+    ) {
 
         cutCake();
+
     }
+
 });
 
 
+// =========================================
 // END SWIPE
+// =========================================
+
 cakeArea.addEventListener("pointerup", () => {
 
     if (!hasCut) {
@@ -75,10 +143,14 @@ cakeArea.addEventListener("pointerup", () => {
         knife.style.transform =
             "rotate(-25deg) translateX(-30px)";
     }
+
 });
 
 
-// ALSO HANDLE POINTER CANCEL
+// =========================================
+// POINTER CANCEL
+// =========================================
+
 cakeArea.addEventListener("pointercancel", () => {
 
     if (!hasCut) {
@@ -86,12 +158,18 @@ cakeArea.addEventListener("pointercancel", () => {
         isSwiping = false;
 
         cakeArea.classList.remove("swiping");
+
+        knife.style.left = "15px";
+
+        knife.style.transform =
+            "rotate(-25deg) translateX(-30px)";
     }
+
 });
 
 
 // =========================================
-// CUT THE CAKE
+// STEP 3 — CUT CAKE
 // =========================================
 
 function cutCake() {
@@ -103,44 +181,63 @@ function cutCake() {
 
     cakeArea.classList.remove("swiping");
 
-    // Add cut class
+    // Add cut animation
     cakeArea.classList.add("cut");
 
-    // Hide instruction
-    swipeText.style.opacity = "0";
+    // Hide cut instruction
+    cutText.style.opacity = "0";
 
     setTimeout(() => {
-        swipeText.style.display = "none";
+
+        cutText.style.display = "none";
+
     }, 400);
 
-    // Show message
+
+    // Show final message
     setTimeout(() => {
 
         cutMessage.style.display = "block";
 
     }, 700);
 
-    // Small celebration
+
+    // Celebration
     createConfetti();
+
 }
 
 
 // =========================================
-// SIMPLE CONFETTI
+// CONFETTI
 // =========================================
 
 function createConfetti() {
 
-    const symbols = ["✦", "✧", "♡", "•"];
+    const symbols = [
+        "✦",
+        "✧",
+        "♡",
+        "✿",
+        "•"
+    ];
 
-    for (let i = 0; i < 18; i++) {
 
-        const piece = document.createElement("span");
+    for (let i = 0; i < 20; i++) {
 
-        piece.className = "confetti-piece";
+        const piece =
+            document.createElement("span");
+
+        piece.className =
+            "confetti-piece";
 
         piece.textContent =
-            symbols[Math.floor(Math.random() * symbols.length)];
+            symbols[
+                Math.floor(
+                    Math.random() * symbols.length
+                )
+            ];
+
 
         piece.style.left =
             (35 + Math.random() * 30) + "%";
@@ -148,23 +245,32 @@ function createConfetti() {
         piece.style.top =
             (35 + Math.random() * 10) + "%";
 
+
         piece.style.animationDelay =
-            (Math.random() * 0.4) + "s";
+            (Math.random() * 0.3) + "s";
+
 
         piece.style.setProperty(
             "--x",
-            ((Math.random() - 0.5) * 220) + "px"
+            ((Math.random() - 0.5) * 240) + "px"
         );
+
 
         piece.style.setProperty(
             "--y",
-            (100 + Math.random() * 160) + "px"
+            (100 + Math.random() * 180) + "px"
         );
+
 
         document.body.appendChild(piece);
 
+
         setTimeout(() => {
+
             piece.remove();
+
         }, 1800);
+
     }
-    }
+
+}
