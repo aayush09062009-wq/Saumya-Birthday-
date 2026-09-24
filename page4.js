@@ -1,110 +1,101 @@
 // =========================================
-// PAGE 4 — LITTLE MEMORY
+// PAGE 4 — MEMORY TABLE
 // =========================================
 
-const musicQuestion =
-    document.getElementById("musicQuestion");
+// MUSIC
+const bgMusic = document.getElementById("bgMusic");
+const musicNote = document.getElementById("musicNote");
+const musicButton = document.getElementById("musicButton");
+const musicControl = document.getElementById("musicControl");
 
-const musicYes =
-    document.getElementById("musicYes");
+// MEMORY
+const memoryIntro = document.getElementById("memoryIntro");
+const memoryTable = document.getElementById("memoryTable");
 
-const musicControl =
-    document.getElementById("musicControl");
+const photoOne = document.getElementById("photoOne");
+const photoTwo = document.getElementById("photoTwo");
 
-const bgMusic =
-    document.getElementById("bgMusic");
+const photoInstruction =
+    document.getElementById("photoInstruction");
 
-const memoryScene =
-    document.getElementById("memoryScene");
+const smallMessage =
+    document.getElementById("smallMessage");
 
-const memoryHint =
-    document.getElementById("memoryHint");
+// TRANSITION
+const oopsMessage =
+    document.getElementById("oopsMessage");
 
-const photoOne =
-    document.getElementById("photoOne");
-
-const photoTwo =
-    document.getElementById("photoTwo");
-
-const bothOpened =
-    document.getElementById("bothOpened");
-
-const oopsMoment =
-    document.getElementById("oopsMoment");
-
-const finalMemory =
-    document.getElementById("finalMemory");
+const finalMemoryNote =
+    document.getElementById("finalMemoryNote");
 
 
 // =========================================
 // STATE
 // =========================================
 
-let firstOpened = false;
-let secondOpened = false;
-let musicPlaying = false;
-let endingStarted = false;
+let musicStarted = false;
+
+let firstPhotoRevealed = false;
+let secondPhotoRevealed = false;
+
+let sequenceStarted = false;
 
 
 // =========================================
 // INITIAL STATE
 // =========================================
 
-memoryScene.classList.add("hidden-scene");
+musicControl.style.display = "none";
 
-bothOpened.style.display = "none";
-oopsMoment.style.display = "none";
-finalMemory.style.display = "none";
+oopsMessage.style.display = "none";
+
+finalMemoryNote.style.display = "none";
 
 
 // =========================================
-// MUSIC
+// MUSIC — YES BUTTON
 // =========================================
 
-musicYes.addEventListener("click", () => {
+musicButton.addEventListener("click", async () => {
 
-    bgMusic.volume = 0.45;
+    try {
 
-    bgMusic.play()
-        .then(() => {
+        await bgMusic.play();
 
-            musicPlaying = true;
+        musicStarted = true;
 
-            musicQuestion.classList.add("music-dismiss");
+        // Hide music question
+        musicNote.style.opacity = "0";
 
-            setTimeout(() => {
+        setTimeout(() => {
 
-                musicQuestion.style.display = "none";
+            musicNote.style.display = "none";
 
-                memoryScene.classList.remove(
-                    "hidden-scene"
-                );
+        }, 500);
 
-            }, 700);
 
-            musicControl.textContent = "♪";
+        // Show music control
+        musicControl.style.display = "flex";
 
-        })
-        .catch(() => {
+        setTimeout(() => {
 
-            // If browser blocks playback,
-            // still continue the experience.
+            musicControl.style.opacity = "1";
 
-            musicQuestion.classList.add(
-                "music-dismiss"
-            );
+        }, 50);
 
-            setTimeout(() => {
 
-                musicQuestion.style.display = "none";
+        // Bring memory scene forward
+        memoryIntro.classList.add("show");
 
-                memoryScene.classList.remove(
-                    "hidden-scene"
-                );
+        memoryTable.classList.add("ready");
 
-            }, 700);
+    }
 
-        });
+    catch (error) {
+
+        console.log("Music could not start:", error);
+
+    }
 
 });
 
@@ -113,21 +104,19 @@ musicYes.addEventListener("click", () => {
 // MUSIC CONTROL
 // =========================================
 
-musicControl.addEventListener("click", () => {
+musicControl.addEventListener("click", async () => {
 
     if (bgMusic.paused) {
 
-        bgMusic.play();
-
-        musicPlaying = true;
+        await bgMusic.play();
 
         musicControl.textContent = "♪";
 
-    } else {
+    }
+
+    else {
 
         bgMusic.pause();
-
-        musicPlaying = false;
 
         musicControl.textContent = "Ⅱ";
 
@@ -142,9 +131,13 @@ musicControl.addEventListener("click", () => {
 
 photoOne.addEventListener("click", () => {
 
-    if (firstOpened) return;
+    if (!musicStarted || sequenceStarted) return;
 
-    firstOpened = true;
+    if (firstPhotoRevealed) return;
+
+    firstPhotoRevealed = true;
+
+    photoOne.classList.remove("hidden-photo");
 
     photoOne.classList.add("revealed");
 
@@ -159,9 +152,13 @@ photoOne.addEventListener("click", () => {
 
 photoTwo.addEventListener("click", () => {
 
-    if (secondOpened) return;
+    if (!musicStarted || sequenceStarted) return;
 
-    secondOpened = true;
+    if (secondPhotoRevealed) return;
+
+    secondPhotoRevealed = true;
+
+    photoTwo.classList.remove("hidden-photo");
 
     photoTwo.classList.add("revealed");
 
@@ -171,138 +168,117 @@ photoTwo.addEventListener("click", () => {
 
 
 // =========================================
-// BOTH PHOTOS
+// CHECK BOTH PHOTOS
 // =========================================
 
 function checkBothPhotos() {
 
-    if (!firstOpened || !secondOpened) return;
+    if (
+        !firstPhotoRevealed ||
+        !secondPhotoRevealed
+    ) {
 
-    memoryHint.style.opacity = "0";
+        return;
+
+    }
+
+
+    // Prevent clicking again
+    sequenceStarted = true;
+
+
+    // Hide instruction
+    photoInstruction.style.opacity = "0";
+
 
     setTimeout(() => {
 
-        memoryHint.style.display = "none";
-
-        bothOpened.style.display = "block";
-
-        setTimeout(() => {
-
-            bothOpened.classList.add(
-                "show-both"
-            );
-
-        }, 50);
+        photoInstruction.style.display = "none";
 
     }, 500);
 
 
-    // Let her see both photos
-    // for approximately 4 seconds.
+    // Small message
+    setTimeout(() => {
+
+        smallMessage.classList.add("show");
+
+    }, 600);
+
+
+    // =====================================
+    // WAIT 4 SECONDS
+    // =====================================
 
     setTimeout(() => {
 
-        startDisappearing();
+        smallMessage.classList.remove("show");
 
-    }, 4700);
+        memoryTable.classList.add("photos-leaving");
 
-}
+    }, 4600);
 
 
-// =========================================
-// PHOTOS DISAPPEAR
-// =========================================
-
-function startDisappearing() {
-
-    if (endingStarted) return;
-
-    endingStarted = true;
-
-    bothOpened.classList.remove(
-        "show-both"
-    );
-
-    document.querySelector(".desk")
-        .classList.add("photos-disappear");
+    // =====================================
+    // OOPS MESSAGE
+    // =====================================
 
     setTimeout(() => {
 
-        document.querySelector(".desk")
-            .style.opacity = "0";
+        memoryTable.style.display = "none";
 
-    }, 900);
-
-
-    setTimeout(() => {
-
-        bothOpened.style.display = "none";
-
-        showOops();
-
-    }, 1300);
-
-}
-
-
-// =========================================
-// OOPS
-// =========================================
-
-function showOops() {
-
-    oopsMoment.style.display = "block";
-
-    setTimeout(() => {
-
-        oopsMoment.classList.add(
-            "oops-visible"
-        );
-
-    }, 50);
-
-
-    // After the emotional pause,
-    // bring the memories back.
-
-    setTimeout(() => {
-
-        revealFinalMemory();
-
-    }, 3900);
-
-}
-
-
-// =========================================
-// FINAL MEMORY
-// =========================================
-
-function revealFinalMemory() {
-
-    oopsMoment.classList.remove(
-        "oops-visible"
-    );
-
-    oopsMoment.classList.add(
-        "oops-fade"
-    );
-
-
-    setTimeout(() => {
-
-        oopsMoment.style.display = "none";
-
-        finalMemory.style.display = "block";
+        oopsMessage.style.display = "block";
 
         setTimeout(() => {
 
-            finalMemory.classList.add(
-                "final-visible"
-            );
+            oopsMessage.classList.add("show");
 
-        }, 100);
+        }, 50);
 
-    }, 900);
+    }, 5700);
+
+
+    // =====================================
+    // BRING PHOTOS BACK
+    // =====================================
+
+    setTimeout(() => {
+
+        oopsMessage.classList.remove("show");
+
+    }, 8200);
+
+
+    setTimeout(() => {
+
+        oopsMessage.style.display = "none";
+
+        memoryTable.style.display = "block";
+
+        memoryTable.classList.remove("photos-leaving");
+
+        memoryTable.classList.add("photos-return");
+
+    }, 9000);
+
+
+    // =====================================
+    // FINAL BIRTHDAY MESSAGE
+    // =====================================
+
+    setTimeout(() => {
+
+        finalMemoryNote.style.display = "block";
+
+        setTimeout(() => {
+
+            finalMemoryNote.classList.add("show");
+
+        }, 50);
+
+
+        memoryTable.classList.add("final-fade");
+
+    }, 10400);
 
 }
