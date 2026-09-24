@@ -537,3 +537,473 @@ h1 em {
         right: 3%;
     }
        }
+/* =========================================
+   PAGE 3 — CAKE PAGE
+========================================= */
+
+.cake-page {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(255, 210, 220, 0.10),
+            transparent 45%
+        ),
+        #8b1538;
+}
+
+.cake-content {
+    width: 92%;
+    max-width: 600px;
+
+    text-align: center;
+
+    position: relative;
+    z-index: 5;
+
+    animation: cakePageAppear 1.3s ease forwards;
+}
+
+
+/* =========================================
+   CAKE HEADING
+========================================= */
+
+.cake-content h1 {
+    font-size: clamp(52px, 10vw, 82px);
+
+    line-height: 0.95;
+
+    font-weight: 400;
+
+    letter-spacing: -2px;
+}
+
+.cake-content h1 em {
+    color: #ffd9df;
+}
+
+
+/* =========================================
+   SUBTITLE
+========================================= */
+
+.cake-subtitle {
+    margin-top: 20px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+    letter-spacing: 0.8px;
+
+    color: rgba(255, 244, 234, 0.72);
+}
+
+
+/* =========================================
+   CAKE AREA
+========================================= */
+
+.cake-area {
+    width: 300px;
+    height: 210px;
+
+    margin: 15px auto 0;
+
+    position: relative;
+
+    touch-action: none;
+
+    cursor: crosshair;
+}
+
+
+/* =========================================
+   CAKE
+========================================= */
+
+.cake {
+    width: 190px;
+    height: 125px;
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 18px;
+
+    transform: translateX(-50%);
+
+    transition:
+        transform 0.8s ease,
+        opacity 0.8s ease;
+}
+
+
+/* Cake top */
+
+.cake-top {
+    position: absolute;
+
+    width: 190px;
+    height: 48px;
+
+    top: 25px;
+
+    background: #f7c8c9;
+
+    border-radius: 50%;
+
+    border: 2px solid rgba(255,255,255,0.25);
+
+    z-index: 3;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #9b3e55;
+
+    font-size: 18px;
+}
+
+
+/* Cake body */
+
+.cake-body {
+    position: absolute;
+
+    width: 190px;
+    height: 70px;
+
+    top: 47px;
+
+    background: #e99a9f;
+
+    border-radius: 0 0 15px 15px;
+
+    z-index: 2;
+
+    overflow: hidden;
+}
+
+
+/* Cream */
+
+.cream {
+    position: absolute;
+
+    width: 30px;
+    height: 35px;
+
+    background: #fff1e8;
+
+    border-radius: 0 0 20px 20px;
+
+    top: 0;
+}
+
+.cream1 {
+    left: 35px;
+}
+
+.cream2 {
+    left: 80px;
+}
+
+.cream3 {
+    right: 35px;
+}
+
+
+/* Cake base */
+
+.cake-base {
+    position: absolute;
+
+    width: 205px;
+    height: 15px;
+
+    bottom: 0;
+    left: -7px;
+
+    background: #f4b7bc;
+
+    border-radius: 50%;
+
+    z-index: 4;
+}
+
+
+/* =========================================
+   CANDLE
+========================================= */
+
+.candle {
+    position: absolute;
+
+    width: 13px;
+    height: 48px;
+
+    background: #fff0dc;
+
+    border-radius: 5px;
+
+    left: 50%;
+    top: -18px;
+
+    transform: translateX(-50%);
+
+    z-index: 5;
+}
+
+.flame {
+    position: absolute;
+
+    width: 15px;
+    height: 22px;
+
+    left: 50%;
+    top: -19px;
+
+    transform: translateX(-50%);
+
+    background: #ffd36a;
+
+    border-radius: 50% 50% 50% 50%;
+
+    box-shadow:
+        0 0 15px rgba(255, 210, 100, 0.8);
+
+    animation: flame 0.8s ease-in-out infinite alternate;
+}
+
+
+/* =========================================
+   KNIFE
+========================================= */
+
+.knife {
+    position: absolute;
+
+    font-size: 42px;
+
+    left: 15px;
+    top: 55px;
+
+    z-index: 10;
+
+    opacity: 0;
+
+    transform:
+        rotate(-25deg)
+        translateX(-30px);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.15s ease;
+}
+
+
+/* Knife appears when user starts swiping */
+
+.cake-area.swiping .knife {
+    opacity: 1;
+}
+
+
+/* =========================================
+   SWIPE TEXT
+========================================= */
+
+.swipe-text {
+    margin-top: 0;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color: rgba(255, 244, 234, 0.72);
+
+    animation: swipePulse 1.8s ease-in-out infinite;
+}
+
+
+/* =========================================
+   CUT MESSAGE
+========================================= */
+
+.cut-message {
+    display: none;
+
+    margin-top: 15px;
+
+    animation: messageAppear 1s ease forwards;
+}
+
+.cut-message p {
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color: rgba(255, 244, 234, 0.6);
+
+    margin-bottom: 8px;
+}
+
+.cut-message h2 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 27px;
+
+    font-weight: 400;
+
+    font-style: italic;
+
+    color: #ffd9df;
+}
+
+
+/* =========================================
+   CAKE CUT ANIMATION
+========================================= */
+
+.cake.cut .cake {
+    transform:
+        translateX(-50%)
+        scale(0.96);
+
+    opacity: 0.85;
+}
+
+.cake.cut .flame {
+    animation: none;
+
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        scale(0);
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes cakePageAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes flame {
+
+    from {
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+
+    to {
+        transform:
+            translateX(-50%)
+            scale(0.82);
+    }
+}
+
+
+@keyframes swipePulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: translateX(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(5px);
+    }
+}
+
+
+@keyframes messageAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================
+   MOBILE PAGE 3
+========================================= */
+
+@media (max-width: 600px) {
+
+    .cake-content {
+        width: 94%;
+    }
+
+    .cake-content h1 {
+        font-size: 56px;
+    }
+
+    .cake-subtitle {
+        font-size: 11px;
+    }
+
+    .cake-area {
+        width: 290px;
+        height: 205px;
+    }
+
+    .swipe-text {
+        font-size: 9px;
+        letter-spacing: 1.5px;
+    }
+}
