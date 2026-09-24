@@ -11,7 +11,7 @@
 html,
 body {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
 }
 
 body {
@@ -21,9 +21,111 @@ body {
     font-family: Georgia, "Times New Roman", serif;
 }
 
+button {
+    font-family: Arial, sans-serif;
+}
+
 
 /* =========================================
-   PAGE 1
+   FLOATING STICKERS
+========================================= */
+
+.stickers {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.sticker {
+    position: absolute;
+    opacity: 0.65;
+    animation: floatSticker 6s ease-in-out infinite;
+}
+
+.s1 {
+    left: 8%;
+    top: 14%;
+    font-size: 20px;
+}
+
+.s2 {
+    right: 12%;
+    top: 18%;
+    font-size: 16px;
+    animation-delay: 1s;
+}
+
+.s3 {
+    left: 15%;
+    bottom: 18%;
+    font-size: 18px;
+    animation-delay: 2s;
+}
+
+.s4 {
+    right: 9%;
+    bottom: 25%;
+    font-size: 20px;
+    animation-delay: 0.5s;
+}
+
+.s5 {
+    left: 5%;
+    top: 52%;
+    font-size: 15px;
+    animation-delay: 1.5s;
+}
+
+.s6 {
+    right: 17%;
+    top: 60%;
+    font-size: 18px;
+    animation-delay: 2.5s;
+}
+
+.s7 {
+    left: 28%;
+    top: 8%;
+    font-size: 14px;
+    animation-delay: 3s;
+}
+
+.s8 {
+    right: 28%;
+    bottom: 10%;
+    font-size: 16px;
+    animation-delay: 1.2s;
+}
+
+.s9 {
+    left: 42%;
+    top: 12%;
+    font-size: 13px;
+    animation-delay: 2.2s;
+}
+
+.s10 {
+    right: 5%;
+    top: 42%;
+    font-size: 18px;
+    animation-delay: 0.8s;
+}
+
+@keyframes floatSticker {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(5deg);
+    }
+}
+
+
+/* =========================================
+   PAGE 1 — OPENING
 ========================================= */
 
 .opening-page {
@@ -40,306 +142,108 @@ body {
     background:
         radial-gradient(
             circle at 50% 40%,
-            rgba(255, 255, 255, 0.07),
+            rgba(255, 210, 220, 0.12),
             transparent 45%
         ),
         #8b1538;
 }
 
-
-/* =========================================
-   PAGE 1 CONTENT
-========================================= */
-
 .opening-content {
     width: 90%;
-    max-width: 650px;
-
+    max-width: 600px;
     text-align: center;
 
     position: relative;
     z-index: 5;
 
-    animation: contentAppear 1.5s ease forwards;
+    animation: pageAppear 1.4s ease forwards;
 }
 
 .eyebrow {
     font-family: Arial, sans-serif;
-    font-size: 11px;
-
-    letter-spacing: 4px;
+    font-size: 10px;
     text-transform: uppercase;
-
-    opacity: 0.75;
-
-    margin-bottom: 18px;
+    letter-spacing: 3px;
+    color: rgba(255, 244, 234, 0.65);
 }
 
 .tiny-line {
     width: 35px;
     height: 1px;
+    background: rgba(255, 244, 234, 0.45);
 
-    background: rgba(255, 244, 234, 0.65);
-
-    margin: 0 auto 30px;
+    margin: 15px auto 25px;
 }
 
-
-/* =========================================
-   HEADINGS
-========================================= */
-
-h1 {
-    font-size: clamp(43px, 9vw, 78px);
-
-    line-height: 1.05;
-
+.opening-content h1 {
+    font-size: clamp(48px, 10vw, 78px);
+    line-height: 0.95;
     font-weight: 400;
-
     letter-spacing: -2px;
-
-    text-shadow:
-        0 3px 20px rgba(0, 0, 0, 0.12);
 }
 
-h1 em {
-    font-style: italic;
-    font-weight: 400;
+.opening-content h1 em {
     color: #ffd9df;
 }
 
-
-/* =========================================
-   PAGE 1 SUBTITLE
-========================================= */
-
 .subtitle {
-    margin-top: 28px;
+    margin-top: 25px;
 
     font-family: Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.7;
+    letter-spacing: 0.8px;
 
-    font-size: 13px;
-
-    line-height: 1.8;
-
-    letter-spacing: 1px;
-
-    color: rgba(255, 244, 234, 0.78);
+    color: rgba(255, 244, 234, 0.72);
 }
 
-
-/* =========================================
-   BUTTON
-========================================= */
-
 .open-button {
-    margin-top: 38px;
+    margin-top: 35px;
 
-    padding: 13px 25px;
-
-    border: 1px solid rgba(255, 244, 234, 0.45);
-
-    border-radius: 50px;
-
-    background: rgba(255, 255, 255, 0.07);
+    border: none;
+    background: transparent;
 
     color: #fff4ea;
 
     font-family: Arial, sans-serif;
-
-    font-size: 12px;
-
-    letter-spacing: 1.5px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: lowercase;
 
     cursor: pointer;
 
     opacity: 0;
-
-    transform: translateY(10px);
-
-    pointer-events: none;
+    transform: translateY(8px);
 
     transition:
         opacity 0.8s ease,
-        transform 0.8s ease,
-        background 0.3s ease;
+        transform 0.8s ease;
 }
 
 .open-button.show {
     opacity: 1;
-
     transform: translateY(0);
-
-    pointer-events: auto;
 }
 
 .open-button:hover {
-    background: rgba(255, 255, 255, 0.16);
-
-    transform: translateY(-2px);
+    color: #ffd9df;
 }
 
-
-/* =========================================
-   FLOATING STICKERS
-========================================= */
-
-.stickers {
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    pointer-events: none;
-
-    overflow: hidden;
-
-    z-index: 2;
-}
-
-.sticker {
-    position: absolute;
-
-    display: block;
-
-    user-select: none;
-
-    opacity: 0.75;
-
-    filter: drop-shadow(
-        0 5px 10px rgba(0, 0, 0, 0.12)
-    );
-
-    animation:
-        floatSticker 7s ease-in-out infinite;
-}
-
-
-/* Sticker positions */
-
-.s1 {
-    top: 12%;
-    left: 10%;
-    font-size: 28px;
-    animation-delay: 0s;
-}
-
-.s2 {
-    top: 20%;
-    right: 14%;
-    font-size: 23px;
-    animation-delay: 1s;
-}
-
-.s3 {
-    top: 68%;
-    left: 8%;
-    font-size: 27px;
-    animation-delay: 2s;
-}
-
-.s4 {
-    top: 10%;
-    right: 35%;
-    font-size: 20px;
-    animation-delay: 3s;
-}
-
-.s5 {
-    bottom: 16%;
-    right: 12%;
-    font-size: 30px;
-    animation-delay: 1.5s;
-}
-
-.s6 {
-    top: 43%;
-    left: 5%;
-    font-size: 25px;
-    animation-delay: 2.5s;
-}
-
-.s7 {
-    bottom: 30%;
-    left: 20%;
-    font-size: 19px;
-    animation-delay: 4s;
-}
-
-.s8 {
-    top: 34%;
-    right: 7%;
-    font-size: 25px;
-    animation-delay: 3.5s;
-}
-
-.s9 {
-    bottom: 8%;
-    left: 43%;
-    font-size: 22px;
-    animation-delay: 2s;
-}
-
-.s10 {
-    top: 75%;
-    right: 32%;
-    font-size: 19px;
-    animation-delay: 4.5s;
-}
-
-
-/* =========================================
-   STICKER ANIMATION
-========================================= */
-
-@keyframes floatSticker {
-
-    0% {
-        transform:
-            translateY(0)
-            rotate(-5deg);
-    }
-
-    50% {
-        transform:
-            translateY(-18px)
-            rotate(6deg);
-    }
-
-    100% {
-        transform:
-            translateY(0)
-            rotate(-5deg);
-    }
-}
-
-
-/* =========================================
-   PAGE 1 ENTRANCE
-========================================= */
-
-@keyframes contentAppear {
-
+@keyframes pageAppear {
     from {
         opacity: 0;
-
-        transform:
-            translateY(18px);
+        transform: translateY(18px);
     }
 
     to {
         opacity: 1;
-
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
 }
 
 
 /* =========================================
-   PAGE 2 — BIRTHDAY PAGE
+   PAGE 2 — BIRTHDAY
 ========================================= */
 
 .birthday-page {
@@ -355,38 +259,29 @@ h1 em {
 
     background:
         radial-gradient(
-            circle at 50% 45%,
-            rgba(255, 220, 225, 0.10),
+            circle at 50% 40%,
+            rgba(255, 210, 220, 0.12),
             transparent 45%
         ),
         #8b1538;
 }
 
 .birthday-content {
-    width: 90%;
-    max-width: 620px;
+    width: 92%;
+    max-width: 650px;
 
     text-align: center;
 
     position: relative;
     z-index: 5;
 
-    animation:
-        birthdayAppear 1.6s ease forwards;
+    animation: pageAppear 1.3s ease forwards;
 }
 
-
-/* =========================================
-   PAGE 2 HEADING
-========================================= */
-
 .birthday-content h1 {
-    font-size: clamp(48px, 9vw, 78px);
-
-    line-height: 1.05;
-
+    font-size: clamp(48px, 10vw, 78px);
+    line-height: 0.95;
     font-weight: 400;
-
     letter-spacing: -2px;
 }
 
@@ -394,149 +289,32 @@ h1 em {
     color: #ffd9df;
 }
 
-
-/* =========================================
-   PAGE 2 POEM
-========================================= */
-
 .poem {
-    margin: 35px auto 0;
+    margin-top: 30px;
 
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px;
+    line-height: 1.7;
 
-    font-size: 16px;
-
-    line-height: 1.8;
-
-    color: rgba(255, 244, 234, 0.88);
+    color: rgba(255, 244, 234, 0.82);
 }
 
 .poem p {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
-
-
-/* =========================================
-   QUIET FINAL WISH
-========================================= */
 
 .hidden-wish {
-    margin-top: 28px;
+    margin-top: 5px;
 
     font-family: Arial, sans-serif;
-
-    font-size: 10px;
-
+    font-size: 9px;
     letter-spacing: 2px;
-
     text-transform: uppercase;
 
-    color: rgba(255, 244, 234, 0.55);
+    color: rgba(255, 244, 234, 0.45);
 }
 
 
-/* =========================================
-   PAGE 2 BUTTON
-========================================= */
-
-.birthday-content .open-button {
-    margin-top: 32px;
-}
-
-
-/* =========================================
-   PAGE 2 ENTRANCE
-========================================= */
-
-@keyframes birthdayAppear {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 600px) {
-
-    h1 {
-        font-size: 47px;
-
-        letter-spacing: -1.5px;
-    }
-
-    .subtitle {
-        font-size: 12px;
-    }
-
-    .eyebrow {
-        font-size: 9px;
-
-        letter-spacing: 3px;
-    }
-
-    .birthday-content {
-        width: 88%;
-    }
-
-    .birthday-content h1 {
-        font-size: 48px;
-    }
-
-    .poem {
-        font-size: 14px;
-
-        line-height: 1.75;
-    }
-
-    .poem p {
-        margin-bottom: 20px;
-    }
-
-    .hidden-wish {
-        font-size: 9px;
-    }
-
-    .s1 {
-        left: 7%;
-    }
-
-    .s2 {
-        right: 8%;
-    }
-
-    .s3 {
-        left: 5%;
-    }
-
-    .s5 {
-        right: 7%;
-    }
-
-    .s6 {
-        left: 3%;
-    }
-
-    .s8 {
-        right: 3%;
-    }
-       }
 /* =========================================
    PAGE 3 — CAKE PAGE
 ========================================= */
@@ -574,17 +352,12 @@ h1 em {
 }
 
 
-/* =========================================
-   CAKE HEADING
-========================================= */
+/* CAKE HEADING */
 
 .cake-content h1 {
     font-size: clamp(52px, 10vw, 82px);
-
     line-height: 0.95;
-
     font-weight: 400;
-
     letter-spacing: -2px;
 }
 
@@ -593,28 +366,21 @@ h1 em {
 }
 
 
-/* =========================================
-   SUBTITLE
-========================================= */
+/* SUBTITLE */
 
 .cake-subtitle {
     margin-top: 20px;
 
     font-family: Arial, sans-serif;
-
     font-size: 12px;
-
     line-height: 1.7;
-
     letter-spacing: 0.8px;
 
     color: rgba(255, 244, 234, 0.72);
 }
 
 
-/* =========================================
-   CAKE AREA
-========================================= */
+/* CAKE AREA */
 
 .cake-area {
     width: 300px;
@@ -625,14 +391,11 @@ h1 em {
     position: relative;
 
     touch-action: none;
-
     cursor: crosshair;
 }
 
 
-/* =========================================
-   CAKE
-========================================= */
+/* CAKE */
 
 .cake {
     width: 190px;
@@ -650,9 +413,6 @@ h1 em {
         opacity 0.8s ease;
 }
 
-
-/* Cake top */
-
 .cake-top {
     position: absolute;
 
@@ -665,7 +425,7 @@ h1 em {
 
     border-radius: 50%;
 
-    border: 2px solid rgba(255,255,255,0.25);
+    border: 2px solid rgba(255, 255, 255, 0.25);
 
     z-index: 3;
 
@@ -674,12 +434,8 @@ h1 em {
     justify-content: center;
 
     color: #9b3e55;
-
     font-size: 18px;
 }
-
-
-/* Cake body */
 
 .cake-body {
     position: absolute;
@@ -697,9 +453,6 @@ h1 em {
 
     overflow: hidden;
 }
-
-
-/* Cream */
 
 .cream {
     position: absolute;
@@ -726,9 +479,6 @@ h1 em {
     right: 35px;
 }
 
-
-/* Cake base */
-
 .cake-base {
     position: absolute;
 
@@ -746,9 +496,7 @@ h1 em {
 }
 
 
-/* =========================================
-   CANDLE
-========================================= */
+/* CANDLE */
 
 .candle {
     position: absolute;
@@ -781,18 +529,17 @@ h1 em {
 
     background: #ffd36a;
 
-    border-radius: 50% 50% 50% 50%;
+    border-radius: 50%;
 
     box-shadow:
         0 0 15px rgba(255, 210, 100, 0.8);
 
-    animation: flame 0.8s ease-in-out infinite alternate;
+    animation:
+        flame 0.8s ease-in-out infinite alternate;
 }
 
 
-/* =========================================
-   KNIFE
-========================================= */
+/* KNIFE */
 
 .knife {
     position: absolute;
@@ -817,17 +564,12 @@ h1 em {
         transform 0.15s ease;
 }
 
-
-/* Knife appears when user starts swiping */
-
 .cake-area.swiping .knife {
     opacity: 1;
 }
 
 
-/* =========================================
-   SWIPE TEXT
-========================================= */
+/* SWIPE TEXT */
 
 .swipe-text {
     margin-top: 0;
@@ -842,20 +584,20 @@ h1 em {
 
     color: rgba(255, 244, 234, 0.72);
 
-    animation: swipePulse 1.8s ease-in-out infinite;
+    animation:
+        swipePulse 1.8s ease-in-out infinite;
 }
 
 
-/* =========================================
-   CUT MESSAGE
-========================================= */
+/* CUT MESSAGE */
 
 .cut-message {
     display: none;
 
     margin-top: 15px;
 
-    animation: messageAppear 1s ease forwards;
+    animation:
+        messageAppear 1s ease forwards;
 }
 
 .cut-message p {
@@ -886,10 +628,10 @@ h1 em {
 
 
 /* =========================================
-   CAKE CUT ANIMATION
+   CAKE CUT — FIXED SELECTORS
 ========================================= */
 
-.cake.cut .cake {
+.cake-area.cut .cake {
     transform:
         translateX(-50%)
         scale(0.96);
@@ -897,7 +639,7 @@ h1 em {
     opacity: 0.85;
 }
 
-.cake.cut .flame {
+.cake-area.cut .flame {
     animation: none;
 
     opacity: 0;
@@ -909,29 +651,64 @@ h1 em {
 
 
 /* =========================================
-   ANIMATIONS
+   CONFETTI
 ========================================= */
 
-@keyframes cakePageAppear {
+.confetti-piece {
+    position: fixed;
 
+    z-index: 50;
+
+    pointer-events: none;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 18px;
+
+    color: #ffd9df;
+
+    animation:
+        confettiFall 1.6s ease-out forwards;
+}
+
+@keyframes confettiFall {
     from {
-        opacity: 0;
-
-        transform:
-            translateY(20px);
-    }
-
-    to {
         opacity: 1;
 
         transform:
-            translateY(0);
+            translate(0, 0)
+            rotate(0deg)
+            scale(1);
+    }
+
+    to {
+        opacity: 0;
+
+        transform:
+            translate(var(--x), var(--y))
+            rotate(220deg)
+            scale(0.6);
     }
 }
 
 
-@keyframes flame {
+/* =========================================
+   ANIMATIONS
+========================================= */
 
+@keyframes cakePageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes flame {
     from {
         transform:
             translateX(-50%)
@@ -945,11 +722,8 @@ h1 em {
     }
 }
 
-
 @keyframes swipePulse {
-
-    0%,
-    100% {
+    0%, 100% {
         opacity: 0.5;
         transform: translateX(0);
     }
@@ -960,33 +734,34 @@ h1 em {
     }
 }
 
-
 @keyframes messageAppear {
-
     from {
         opacity: 0;
-
-        transform:
-            translateY(12px);
+        transform: translateY(12px);
     }
 
     to {
         opacity: 1;
-
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
 }
 
 
 /* =========================================
-   MOBILE PAGE 3
+   MOBILE
 ========================================= */
 
 @media (max-width: 600px) {
 
+    .opening-content,
+    .birthday-content,
     .cake-content {
         width: 94%;
+    }
+
+    .opening-content h1,
+    .birthday-content h1 {
+        font-size: 56px;
     }
 
     .cake-content h1 {
@@ -1006,4 +781,9 @@ h1 em {
         font-size: 9px;
         letter-spacing: 1.5px;
     }
-}
+
+    .poem {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+       }
