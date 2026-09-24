@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Little Memory ♡</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="page4-body">
+
+    <!-- =====================================
+         PAGE 4
+    ====================================== -->
+
+    <main class="memory-page">
+
+        <!-- tiny floating decorations -->
+
+        <div class="memory-deco deco1">✦</div>
+        <div class="memory-deco deco2">♡</div>
+        <div class="memory-deco deco3">✿</div>
+        <div class="memory-deco deco4">✧</div>
+
+
+        <!-- =====================================
+             MUSIC QUESTION
+        ====================================== -->
+
+        <div id="musicQuestion" class="music-question">
+
+            <div class="music-sticker">
+
+                <div class="sticker-face">
+                    ♡
+                </div>
+
+                <div class="music-note">
+                    ♪
+                </div>
+
+            </div>
+
+            <p class="music-question-text">
+                wanna hear<br>
+                a little music?
+            </p>
+
+            <button id="musicYes" class="music-yes">
+                yes ♡
+            </button>
+
+        </div>
+
+
+        <!-- =====================================
+             SMALL MUSIC CONTROL
+        ====================================== -->
+
+        <button
+            id="musicControl"
+            class="music-control"
+            aria-label="Pause music">
+
+            ♪
+
+        </button>
+
+
+        <!-- =====================================
+             DESK / MEMORY AREA
+        ====================================== -->
+
+        <section id="memoryScene" class="memory-scene">
+
+            <p class="memory-eyebrow">
+                before you go
+            </p>
+
+            <h1 class="memory-title">
+                a couple of<br>
+                <em>little moments.</em>
+            </h1>
+
+            <p id="memoryHint" class="memory-hint">
+                tap them gently ♡
+            </p>
+
+
+            <!-- TABLE -->
+
+            <div class="desk">
+
+                <!-- little paper decoration -->
+
+                <div class="paper-note">
+                    <span>
+                        just for today ♡
+                    </span>
+                </div>
+
+
+                <!-- PHOTO 1 -->
+
+                <button
+                    id="photoOne"
+                    class="memory-photo photo-one"
+                    aria-label="Reveal first photograph">
+
+                    <div class="photo-paper">
+
+                        <div class="photo-image">
+
+                            <img
+                                src="assets/photo1.jpg"
+                                alt="First birthday memory">
+
+                            <div class="photo-cover"></div>
+
+                        </div>
+
+                        <span class="photo-caption">
+                            one little moment
+                        </span>
+
+                    </div>
+
+                </button>
+
+
+                <!-- PHOTO 2 -->
+
+                <button
+                    id="photoTwo"
+                    class="memory-photo photo-two"
+                    aria-label="Reveal second photograph">
+
+                    <div class="photo-paper">
+
+                        <div class="photo-image">
+
+                            <img
+                                src="assets/photo2.jpg"
+                                alt="Second birthday memory">
+
+                            <div class="photo-cover"></div>
+
+                        </div>
+
+                        <span class="photo-caption">
+                            another little moment
+                        </span>
+
+                    </div>
+
+                </button>
+
+
+                <!-- tiny flower -->
+
+                <div class="desk-flower">
+                    ✿
+                </div>
+
+            </div>
+
+
+            <!-- =====================================
+                 BOTH PHOTOS REVEALED
+            ====================================== -->
+
+            <p id="bothOpened" class="both-opened">
+                some things are nicer<br>
+                when discovered slowly. ♡
+            </p>
+
+
+            <!-- =====================================
+                 OOPS MOMENT
+            ====================================== -->
+
+            <div id="oopsMoment" class="oops-moment">
+
+                <p class="oops-small">
+                    oops…
+                </p>
+
+                <p class="oops-main">
+                    I almost let those memories disappear.
+                </p>
+
+                <p class="oops-final">
+                    but some memories deserve to stay. ♡
+                </p>
+
+            </div>
+
+
+            <!-- =====================================
+                 FINAL MEMORY
+            ====================================== -->
+
+            <div id="finalMemory" class="final-memory">
+
+                <div class="final-photos">
+
+                    <div class="final-photo final-photo-one">
+                        <img
+                            src="assets/photo1.jpg"
+                            alt="First memory">
+                    </div>
+
+                    <div class="final-photo final-photo-two">
+                        <img
+                            src="assets/photo2.jpg"
+                            alt="Second memory">
+                    </div>
+
+                </div>
+
+
+                <div class="final-note">
+
+                    <p class="final-eyebrow">
+                        and one last thing
+                    </p>
+
+                    <h2>
+                        Happy Birthday,<br>
+                        <em>Saumya ♡</em>
+                    </h2>
+
+                    <div class="final-line"></div>
+
+                    <p class="birthday-note">
+                        May the years ahead quietly return
+                        every light you left behind
+                        in the lives you touched.
+                    </p>
+
+                    <p class="keep-note">
+                        keep this little moment somewhere safe.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================
+         MUSIC
+    ====================================== -->
+
+    <audio
+        id="bgMusic"
+        src="assets/blue-instrumental.mp3"
+        loop
+        preload="auto">
+    </audio>
+
+
+    <script src="page4.js"></script>
+
+</body>
+
+</html>
