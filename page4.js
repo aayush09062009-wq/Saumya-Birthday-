@@ -2,18 +2,37 @@
 // PAGE 4 — MEMORY TABLE
 // =========================================
 
-// MUSIC
-const bgMusic = document.getElementById("bgMusic");
-const musicNote = document.getElementById("musicNote");
-const musicButton = document.getElementById("musicButton");
-const musicControl = document.getElementById("musicControl");
 
-// MEMORY
-const memoryIntro = document.getElementById("memoryIntro");
-const memoryTable = document.getElementById("memoryTable");
+// =========================================
+// ELEMENTS
+// =========================================
 
-const photoOne = document.getElementById("photoOne");
-const photoTwo = document.getElementById("photoTwo");
+const bgMusic =
+    document.getElementById("bgMusic");
+
+const musicNote =
+    document.getElementById("musicNote");
+
+const musicButton =
+    document.getElementById("musicButton");
+
+const musicControl =
+    document.getElementById("musicControl");
+
+
+const memoryIntro =
+    document.getElementById("memoryIntro");
+
+const memoryTable =
+    document.getElementById("memoryTable");
+
+
+const photoOne =
+    document.getElementById("photoOne");
+
+const photoTwo =
+    document.getElementById("photoTwo");
+
 
 const photoInstruction =
     document.getElementById("photoInstruction");
@@ -21,7 +40,7 @@ const photoInstruction =
 const smallMessage =
     document.getElementById("smallMessage");
 
-// TRANSITION
+
 const oopsMessage =
     document.getElementById("oopsMessage");
 
@@ -45,18 +64,30 @@ let sequenceStarted = false;
 // INITIAL STATE
 // =========================================
 
+// Music control hidden
 musicControl.style.display = "none";
 
+// Photos are NOT clickable
+memoryTable.classList.remove("ready");
+
+// Oops hidden
 oopsMessage.style.display = "none";
 
+// Final message hidden
 finalMemoryNote.style.display = "none";
 
 
 // =========================================
-// MUSIC — YES BUTTON
+// MUSIC PROMPT
 // =========================================
 
-musicButton.addEventListener("click", async () => {
+musicButton.addEventListener("click", async (event) => {
+
+    // Stop this click from reaching anything behind it
+    event.stopPropagation();
+
+    if (musicStarted) return;
+
 
     try {
 
@@ -64,8 +95,11 @@ musicButton.addEventListener("click", async () => {
 
         musicStarted = true;
 
-        // Hide music question
+
+        // Hide music notification
         musicNote.style.opacity = "0";
+        musicNote.style.pointerEvents = "none";
+
 
         setTimeout(() => {
 
@@ -84,16 +118,21 @@ musicButton.addEventListener("click", async () => {
         }, 50);
 
 
-        // Bring memory scene forward
-        memoryIntro.classList.add("show");
-
+        // Now allow photos to be clicked
         memoryTable.classList.add("ready");
+
+
+        // Show intro
+        memoryIntro.classList.add("show");
 
     }
 
     catch (error) {
 
-        console.log("Music could not start:", error);
+        console.log(
+            "Music could not start:",
+            error
+        );
 
     }
 
@@ -104,13 +143,29 @@ musicButton.addEventListener("click", async () => {
 // MUSIC CONTROL
 // =========================================
 
-musicControl.addEventListener("click", async () => {
+musicControl.addEventListener("click", async (event) => {
+
+    event.stopPropagation();
+
 
     if (bgMusic.paused) {
 
-        await bgMusic.play();
+        try {
 
-        musicControl.textContent = "♪";
+            await bgMusic.play();
+
+            musicControl.textContent = "♪";
+
+        }
+
+        catch (error) {
+
+            console.log(
+                "Music could not resume:",
+                error
+            );
+
+        }
 
     }
 
@@ -129,17 +184,28 @@ musicControl.addEventListener("click", async () => {
 // PHOTO 1
 // =========================================
 
-photoOne.addEventListener("click", () => {
+photoOne.addEventListener("click", (event) => {
 
-    if (!musicStarted || sequenceStarted) return;
+    event.stopPropagation();
+
+    if (!musicStarted) return;
+
+    if (sequenceStarted) return;
 
     if (firstPhotoRevealed) return;
 
+
     firstPhotoRevealed = true;
 
-    photoOne.classList.remove("hidden-photo");
 
-    photoOne.classList.add("revealed");
+    photoOne.classList.remove(
+        "hidden-photo"
+    );
+
+    photoOne.classList.add(
+        "revealed"
+    );
+
 
     checkBothPhotos();
 
@@ -150,17 +216,28 @@ photoOne.addEventListener("click", () => {
 // PHOTO 2
 // =========================================
 
-photoTwo.addEventListener("click", () => {
+photoTwo.addEventListener("click", (event) => {
 
-    if (!musicStarted || sequenceStarted) return;
+    event.stopPropagation();
+
+    if (!musicStarted) return;
+
+    if (sequenceStarted) return;
 
     if (secondPhotoRevealed) return;
 
+
     secondPhotoRevealed = true;
 
-    photoTwo.classList.remove("hidden-photo");
 
-    photoTwo.classList.add("revealed");
+    photoTwo.classList.remove(
+        "hidden-photo"
+    );
+
+    photoTwo.classList.add(
+        "revealed"
+    );
+
 
     checkBothPhotos();
 
@@ -183,7 +260,6 @@ function checkBothPhotos() {
     }
 
 
-    // Prevent clicking again
     sequenceStarted = true;
 
 
@@ -193,7 +269,8 @@ function checkBothPhotos() {
 
     setTimeout(() => {
 
-        photoInstruction.style.display = "none";
+        photoInstruction.style.display =
+            "none";
 
     }, 500);
 
@@ -207,20 +284,22 @@ function checkBothPhotos() {
 
 
     // =====================================
-    // WAIT 4 SECONDS
+    // PHOTOS DISAPPEAR
     // =====================================
 
     setTimeout(() => {
 
         smallMessage.classList.remove("show");
 
-        memoryTable.classList.add("photos-leaving");
+        memoryTable.classList.add(
+            "photos-leaving"
+        );
 
     }, 4600);
 
 
     // =====================================
-    // OOPS MESSAGE
+    // OOPS
     // =====================================
 
     setTimeout(() => {
@@ -239,7 +318,7 @@ function checkBothPhotos() {
 
 
     // =====================================
-    // BRING PHOTOS BACK
+    // PHOTOS RETURN
     // =====================================
 
     setTimeout(() => {
@@ -255,9 +334,13 @@ function checkBothPhotos() {
 
         memoryTable.style.display = "block";
 
-        memoryTable.classList.remove("photos-leaving");
+        memoryTable.classList.remove(
+            "photos-leaving"
+        );
 
-        memoryTable.classList.add("photos-return");
+        memoryTable.classList.add(
+            "photos-return"
+        );
 
     }, 9000);
 
@@ -268,16 +351,22 @@ function checkBothPhotos() {
 
     setTimeout(() => {
 
-        finalMemoryNote.style.display = "block";
+        finalMemoryNote.style.display =
+            "block";
+
 
         setTimeout(() => {
 
-            finalMemoryNote.classList.add("show");
+            finalMemoryNote.classList.add(
+                "show"
+            );
 
         }, 50);
 
 
-        memoryTable.classList.add("final-fade");
+        memoryTable.classList.add(
+            "final-fade"
+        );
 
     }, 10400);
 
